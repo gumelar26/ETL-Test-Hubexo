@@ -37,7 +37,12 @@ class TestCase:
                 "licence": "https://locationiq.com/attribution",
                 "osm_type": "way",
                 "osm_id": "1062629834",
-                "boundingbox": ["47.3776855", "47.3777968", "8.5416158", "8.5416197"],
+                "boundingbox": [
+                "47.3776855",
+                "47.3777968",
+                "8.5416158",
+                "8.5416197"
+                ],
                 "lat": "47.3777388",
                 "lon": "8.5416197",
                 "display_name": "Bahnhofquai, City, Altstadt, Zurich, District Zurich, Zurich, 8001, Switzerland",
@@ -50,36 +55,15 @@ class TestCase:
                 "licence": "https://locationiq.com/attribution",
                 "osm_type": "way",
                 "osm_id": "294148769",
-                "boundingbox": ["47.3782843", "47.3785179", "8.5413708", "8.5414564"],
+                "boundingbox": [
+                "47.3782843",
+                "47.3785179",
+                "8.5413708",
+                "8.5414564"
+                ],
                 "lat": "47.3784122",
                 "lon": "8.5413887",
                 "display_name": "Bahnhofquai, City, Altstadt, Zurich, District Zurich, Zurich, 8021, Switzerland",
-                "class": "highway",
-                "type": "tertiary",
-                "importance": 0.2634118478675517
-            },
-            {
-                "place_id": "72181945",
-                "licence": "https://locationiq.com/attribution",
-                "osm_type": "way",
-                "osm_id": "1411243431",
-                "boundingbox": ["47.3754211", "47.3756972", "8.5418926", "8.5419368"],
-                "lat": "47.3756972",
-                "lon": "8.5419368",
-                "display_name": "Bahnhofquai, Lindenhof, Altstadt, Zurich, District Zurich, Zurich, 8001, Switzerland",
-                "class": "highway",
-                "type": "tertiary",
-                "importance": 0.2634118478675517
-            },
-            {
-                "place_id": "72262299",
-                "licence": "https://locationiq.com/attribution",
-                "osm_type": "way",
-                "osm_id": "8139899",
-                "boundingbox": ["47.3783115", "47.3785059", "8.5417017", "8.5418224"],
-                "lat": "47.3784253",
-                "lon": "8.5417239",
-                "display_name": "Bahnhofquai, City, Altstadt, Zurich, District Zurich, Zurich, 8092, Switzerland",
                 "class": "highway",
                 "type": "tertiary",
                 "importance": 0.2634118478675517
@@ -89,7 +73,12 @@ class TestCase:
                 "licence": "https://locationiq.com/attribution",
                 "osm_type": "way",
                 "osm_id": "4950245",
-                "boundingbox": ["47.3760075", "47.3769173", "8.5414806", "8.541738"],
+                "boundingbox": [
+                "47.3760075",
+                "47.3769173",
+                "8.5414806",
+                "8.541738"
+                ],
                 "lat": "47.3761727",
                 "lon": "8.5416967",
                 "display_name": "Bahnhofquai, Lindenhof, Altstadt, Zurich, District Zurich, Zurich, 8001, Switzerland",

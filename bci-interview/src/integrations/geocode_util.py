@@ -19,7 +19,7 @@ def get_structured_address(token: str, partial_address: str) -> list[dict]:
         "key" : token,
         "q": partial_address,
         "format": "json",
-        "limit": 5
+        "limit": 3
     }
     
     response = requests.get(url, params=params, timeout=10)
