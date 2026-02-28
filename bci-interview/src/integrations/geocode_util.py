@@ -1,8 +1,4 @@
 import requests
-from dotenv import load_dotenv
-import os
-
-load_dotenv()
 
 def get_structured_address(token: str, partial_address: str) -> list[dict]:
     """
