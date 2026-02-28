@@ -32,13 +32,3 @@ def get_structured_address(token: str, partial_address: str) -> list[dict]:
 
     return data
 
-if __name__ == "__main__":
-    token = os.getenv("LOCATIONIQ_API_KEY")
-
-    if not token:
-        raise ValueError("LOCATIONIQ_API_KEY not found in environment variables")
-
-    address = "Bahnhofquai 8"
-    result = get_structured_address(token, address) 
-
-    print(result)  

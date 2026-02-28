@@ -1,5 +1,4 @@
 import json
-from pathlib import Path
 
 def read_json(path: str) -> dict:
     """
@@ -12,11 +11,9 @@ def read_json(path: str) -> dict:
     
     with open(path, "r") as file:
         data = json.load(file)
+        
+        if not isinstance(data, list):
+            raise ValueError("Json must contain list of record")
+
         for record in data:
             yield record
-
-if __name__ == "__main__":
-    json_file_path = Path(__file__).resolve().parent.parent.parent / "data" / "int_test_input" / "input_sample.json"
-    
-    for record in read_json(json_file_path):
-        print(record)

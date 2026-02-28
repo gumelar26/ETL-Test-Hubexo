@@ -1,5 +1,7 @@
-from dotenv import load_dotenv
 import os
+from dotenv import load_dotenv
+
+from src.integrations.geocode_util import get_structured_address
 
 load_dotenv()
 
@@ -13,6 +15,13 @@ def transform(address_iter):
     if not token:
         raise ValueError("LOCATIONIQ_API_KEY not found in environment variables")
     
-    enrich_address = get_structured_address(token, address_iter)
-    
-    yield enrich_adress
+    for record in address_iter:
+        structured_address = get_structured_address(
+            token, 
+            record['project_address']
+        )
+
+        record_enriched = record.copy()
+        record_enriched['structured_address'] = structured_address
+        
+        yield record_enriched

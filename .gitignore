@@ -2,3 +2,5 @@
 scheduler/
 dag_processor_manager/
 .DS_Store
+venv
+__pycache__
