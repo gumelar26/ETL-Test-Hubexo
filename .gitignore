@@ -1,0 +1,4 @@
+*.pdf
+scheduler/
+dag_processor_manager/
+.DS_Store
