@@ -2,10 +2,12 @@ import json
 from pathlib import Path
 
 from src.utils.reader import read_json
+from src.utils.writer import write_json
 from src.transformers.address_transformer import transform
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-json_path = BASE_DIR / "data" / "int_test_input" / "input_sample.json"
+json_path_output = BASE_DIR / "data" / "int_test_output" / "output_sample.json"
+json_path_input = BASE_DIR / "data" / "int_test_input" / "input_sample.json"
 input_sample = [
     {
         "publication_media": "Neue Zürcher Zeitung",
@@ -23,11 +25,11 @@ input_sample = [
 
 class TestCase:
     def test_file_contain_list(self):
-        data = list(read_json(json_path))
+        data = list(read_json(json_path_input))
         assert isinstance(data, list)
     
     def test_read_json_success(self):
-        result = list(read_json(json_path))
+        result = list(read_json(json_path_input))
         assert result == input_sample
 
     def test_transform_success(self):
@@ -93,7 +95,18 @@ class TestCase:
         assert result[0]["structured_address"] == sample_geocode_respose
         assert result[0]["project_address"] == "Bahnhofquai 8"
     
+    def test_write_json_success(self):
+        sample_enriched_data = [
+            {"publication_media": "Neue Zürcher Zeitung", "project_title": "Neubau eines Spielplatzes mit barrierefreiem Zugang und moderner Beleuchtung", "date_scraped": "15/03/2024 14:23:45", "project_address": "Bahnhofquai 8", "structured_address": [{"place_id": "72066280", "licence": "https://locationiq.com/attribution", "osm_type": "way", "osm_id": "1062629834", "boundingbox": ["47.3776855", "47.3777968", "8.5416158", "8.5416197"], "lat": "47.3777388", "lon": "8.5416197", "display_name": "Bahnhofquai, City, Altstadt, Zurich, District Zurich, Zurich, 8001, Switzerland", "class": "highway", "type": "tertiary", "importance": 0.2634118478675517}, {"place_id": "72144767", "licence": "https://locationiq.com/attribution", "osm_type": "way", "osm_id": "294148769", "boundingbox": ["47.3782843", "47.3785179", "8.5413708", "8.5414564"], "lat": "47.3784122", "lon": "8.5413887", "display_name": "Bahnhofquai, City, Altstadt, Zurich, District Zurich, Zurich, 8021, Switzerland", "class": "highway", "type": "tertiary", "importance": 0.2634118478675517}, {"place_id": "72187151", "licence": "https://locationiq.com/attribution", "osm_type": "way", "osm_id": "4950245", "boundingbox": ["47.3760075", "47.3769173", "8.5414806", "8.541738"], "lat": "47.3761727", "lon": "8.5416967", "display_name": "Bahnhofquai, Lindenhof, Altstadt, Zurich, District Zurich, Zurich, 8001, Switzerland", "class": "highway", "type": "residential", "importance": 0.2634118478675517}]},
+            {"publication_media": "Tages-Anzeiger", "project_title": "Sanierung der Fassade und Installation von Solarpanels", "date_scraped": "22/04/2024 09:11:32", "project_address": "Via San Gottardo 39", "structured_address": [{"place_id": "73877421", "licence": "https://locationiq.com/attribution", "osm_type": "node", "osm_id": "12855070125", "boundingbox": ["46.2010909", "46.2011909", "9.0323509", "9.0324509"], "lat": "46.2011409", "lon": "9.0324009", "display_name": "39, Via San Gottardo, Daro, Carasso, Bellinzona, Circolo di Bellinzona, Distretto di Bellinzona, Ticino, 6500, Switzerland", "class": "place", "type": "house", "importance": 0.410062213321126}, {"place_id": "69114048", "licence": "https://locationiq.com/attribution", "osm_type": "node", "osm_id": "3788749364", "boundingbox": ["46.5783017", "46.5784017", "12.8133703", "12.8134703"], "lat": "46.5783517", "lon": "12.8134203", "display_name": "39, Via San Gottardo, Sigilletto / Sighiet, Forni Avoltri / For Davuatri, Udine / Udin / Videm, Friuli – Venezia Giulia, 33020, Italy", "class": "place", "type": "house", "importance": 0.41006017318989846}, {"place_id": "52974022", "licence": "https://locationiq.com/attribution", "osm_type": "node", "osm_id": "4472260850", "boundingbox": ["39.2604073", "39.2605073", "9.1453204", "9.1454204"], "lat": "39.2604573", "lon": "9.1453704", "display_name": "39, Via San Gottardo, Paùli/Monserrato, Casteddu/Cagliari, Sardinia, 09042, Italy", "class": "place", "type": "house", "importance": 0.4100549988555733}]}
+        ]
 
+        write_json(sample_enriched_data, json_path_output)
+
+        with open(json_path_output, "r", encoding="utf-8") as f:
+            result = json.load(f)
+
+        assert result == sample_enriched_data
 
 
     
