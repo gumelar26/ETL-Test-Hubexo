@@ -7,19 +7,25 @@ This project contains an Apache Airflow DAG pipeline for geocoding addresses.
 ## Prerequisites
 - Docker
 - Docker Compose
+- LocationIQ API token
 
 ## Setup & Run
 
-1. **Build and start services:**
+1. **Fill your `.env` file first:**
+  ```env
+  LOCATIONIQ_API_KEY=your_token_here
+  ```
+
+2. **Build and start services:**
   ```bash
   docker-compose up -d
   ```
 
-2. **Access Airflow WebUI:**
+3. **Access Airflow WebUI:**
   - Navigate to `http://localhost:8080`
   - Default credentials: `admin` / `admin`
 
-3. **Trigger DAG:**
+4. **Trigger DAG:**
   - The `geocode_pipeline` DAG processes address data using the geocoding utility
 
 ## Project Structure
